@@ -42,36 +42,38 @@ export interface Tooltip {
         style="opacity: 0; cursor: 'auto';"
         (mousemove)="mouseMove($event)"
         (mouseleave)="hideTooltip()"
-      />
+        />
       <ng-template #defaultTooltipTemplate let-model="model">
         <xhtml:div class="area-tooltip-container">
-          <xhtml:div *ngFor="let tooltipItem of model" class="tooltip-item">
-            <xhtml:span class="tooltip-item-color" [style.background-color]="tooltipItem.color"></xhtml:span>
-            {{ getToolTipText(tooltipItem) }}
-          </xhtml:div>
-        </xhtml:div>
-      </ng-template>
-      <svg:rect
-        #tooltipAnchor
-        [@animationState]="anchorOpacity !== 0 ? 'active' : 'inactive'"
-        class="tooltip-anchor"
-        [attr.x]="anchorPos"
-        y="0"
-        [attr.width]="1"
-        [attr.height]="dims.height"
-        [style.opacity]="anchorOpacity"
-        [style.pointer-events]="'none'"
-        ngx-tooltip
-        [tooltipDisabled]="tooltipDisabled"
-        [tooltipPlacement]="placementTypes.Right"
-        [tooltipType]="styleTypes.tooltip"
-        [tooltipSpacing]="15"
-        [tooltipTemplate]="tooltipTemplate ? tooltipTemplate : defaultTooltipTemplate"
-        [tooltipContext]="anchorValues"
-        [tooltipImmediateExit]="true"
-      />
-    </svg:g>
-  `,
+          @for (tooltipItem of model; track tooltipItem) {
+            <xhtml:div class="tooltip-item">
+              <xhtml:span class="tooltip-item-color" [style.background-color]="tooltipItem.color"></xhtml:span>
+                {{ getToolTipText(tooltipItem) }}
+                </xhtml:div>
+              }
+              </xhtml:div>
+            </ng-template>
+            <svg:rect
+              #tooltipAnchor
+              [@animationState]="anchorOpacity !== 0 ? 'active' : 'inactive'"
+              class="tooltip-anchor"
+              [attr.x]="anchorPos"
+              y="0"
+              [attr.width]="1"
+              [attr.height]="dims.height"
+              [style.opacity]="anchorOpacity"
+              [style.pointer-events]="'none'"
+              ngx-tooltip
+              [tooltipDisabled]="tooltipDisabled"
+              [tooltipPlacement]="placementTypes.Right"
+              [tooltipType]="styleTypes.tooltip"
+              [tooltipSpacing]="15"
+              [tooltipTemplate]="tooltipTemplate ? tooltipTemplate : defaultTooltipTemplate"
+              [tooltipContext]="anchorValues"
+              [tooltipImmediateExit]="true"
+              />
+            </svg:g>
+    `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('animationState', [

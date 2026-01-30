@@ -59,49 +59,51 @@ export function cloneLineCoordinates(original: LineCoordinates): LineCoordinates
   selector: 'g[ngx-charts-box]',
   template: `
     <svg:defs>
-      <svg:g
-        *ngIf="hasGradient"
-        ngx-charts-svg-linear-gradient
-        [orientation]="BarOrientation.Vertical"
-        [name]="gradientId"
-        [stops]="gradientStops"
-      />
+      @if (hasGradient) {
+        <svg:g
+          ngx-charts-svg-linear-gradient
+          [orientation]="BarOrientation.Vertical"
+          [name]="gradientId"
+          [stops]="gradientStops"
+          />
+      }
       <svg:mask [attr.id]="maskLineId">
         <svg:g>
           <rect height="100%" width="100%" fill="white" fill-opacity="1" />
           <path class="bar" [attr.d]="boxPath" fill="black" fill-opacity="1" />
-        </svg:g>
-      </svg:mask>
-    </svg:defs>
-    <svg:g>
-      <svg:path
-        class="bar"
-        role="img"
-        tabIndex="-1"
-        [class.active]="isActive"
-        [class.hidden]="hideBar"
-        [attr.d]="boxPath"
-        [attr.stroke]="strokeColor"
-        [attr.stroke-width]="boxStrokeWidth"
-        [attr.aria-label]="ariaLabel"
-        [attr.fill]="hasGradient ? gradientFill : fill"
-        (click)="select.emit(data)"
-      />
-      <svg:line
-        *ngFor="let line of lineCoordinates; let i = index"
-        class="bar-line"
-        [class.hidden]="hideBar"
-        [attr.x1]="line.v1.x"
-        [attr.y1]="line.v1.y"
-        [attr.x2]="line.v2.x"
-        [attr.y2]="line.v2.y"
-        [attr.stroke]="strokeColor"
-        [attr.stroke-width]="i === 2 ? medianLineWidth : whiskerStrokeWidth"
-        [attr.mask]="i ? undefined : maskLine"
-        fill="none"
-      />
-    </svg:g>
-  `,
+          </svg:g>
+          </svg:mask>
+          </svg:defs>
+          <svg:g>
+            <svg:path
+              class="bar"
+              role="img"
+              tabIndex="-1"
+              [class.active]="isActive"
+              [class.hidden]="hideBar"
+              [attr.d]="boxPath"
+              [attr.stroke]="strokeColor"
+              [attr.stroke-width]="boxStrokeWidth"
+              [attr.aria-label]="ariaLabel"
+              [attr.fill]="hasGradient ? gradientFill : fill"
+              (click)="select.emit(data)"
+              />
+            @for (line of lineCoordinates; track line; let i = $index) {
+              <svg:line
+                class="bar-line"
+                [class.hidden]="hideBar"
+                [attr.x1]="line.v1.x"
+                [attr.y1]="line.v1.y"
+                [attr.x2]="line.v2.x"
+                [attr.y2]="line.v2.y"
+                [attr.stroke]="strokeColor"
+                [attr.stroke-width]="i === 2 ? medianLineWidth : whiskerStrokeWidth"
+                [attr.mask]="i ? undefined : maskLine"
+                fill="none"
+                />
+            }
+            </svg:g>
+    `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false
 })

@@ -19,22 +19,24 @@ import { Gradient } from '../common/types/gradient.interface';
 @Component({
   selector: 'g[ngx-charts-bar]',
   template: `
-    <svg:defs *ngIf="hasGradient">
-      <svg:g ngx-charts-svg-linear-gradient [orientation]="orientation" [name]="gradientId" [stops]="gradientStops" />
-    </svg:defs>
-    <svg:path
-      class="bar"
-      stroke="none"
-      role="img"
-      tabIndex="-1"
-      [class.active]="isActive"
-      [class.hidden]="hideBar"
-      [attr.d]="path"
-      [attr.aria-label]="ariaLabel"
-      [attr.fill]="hasGradient ? gradientFill : fill"
-      (click)="select.emit(data)"
-    />
-  `,
+    @if (hasGradient) {
+      <svg:defs>
+        <svg:g ngx-charts-svg-linear-gradient [orientation]="orientation" [name]="gradientId" [stops]="gradientStops" />
+        </svg:defs>
+      }
+      <svg:path
+        class="bar"
+        stroke="none"
+        role="img"
+        tabIndex="-1"
+        [class.active]="isActive"
+        [class.hidden]="hideBar"
+        [attr.d]="path"
+        [attr.aria-label]="ariaLabel"
+        [attr.fill]="hasGradient ? gradientFill : fill"
+        (click)="select.emit(data)"
+        />
+    `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false
 })

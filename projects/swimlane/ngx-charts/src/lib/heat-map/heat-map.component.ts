@@ -36,64 +36,67 @@ interface RectItem {
       [animations]="animations"
       [legendOptions]="legendOptions"
       (legendLabelClick)="onClick($event)"
-    >
+      >
       <svg:g [attr.transform]="transform" class="heat-map chart">
-        <svg:g
-          ngx-charts-x-axis
-          *ngIf="xAxis"
-          [xScale]="xScale"
-          [dims]="dims"
-          [showLabel]="showXAxisLabel"
-          [labelText]="xAxisLabel"
-          [trimTicks]="trimXAxisTicks"
-          [rotateTicks]="rotateXAxisTicks"
-          [maxTickLength]="maxXAxisTickLength"
-          [tickFormatting]="xAxisTickFormatting"
-          [ticks]="xAxisTicks"
-          [wrapTicks]="wrapTicks"
-          (dimensionsChanged)="updateXAxisHeight($event)"
-        ></svg:g>
-        <svg:g
-          ngx-charts-y-axis
-          *ngIf="yAxis"
-          [yScale]="yScale"
-          [dims]="dims"
-          [showLabel]="showYAxisLabel"
-          [labelText]="yAxisLabel"
-          [trimTicks]="trimYAxisTicks"
-          [maxTickLength]="maxYAxisTickLength"
-          [tickFormatting]="yAxisTickFormatting"
-          [ticks]="yAxisTicks"
-          [wrapTicks]="wrapTicks"
-          (dimensionsChanged)="updateYAxisWidth($event)"
-        ></svg:g>
-        <svg:rect
-          *ngFor="let rect of rects"
-          [attr.x]="rect.x"
-          [attr.y]="rect.y"
-          [attr.rx]="rect.rx"
-          [attr.width]="rect.width"
-          [attr.height]="rect.height"
-          [attr.fill]="rect.fill"
-        />
-        <svg:g
-          ngx-charts-heat-map-cell-series
-          [xScale]="xScale"
-          [yScale]="yScale"
-          [colors]="colors"
-          [data]="results"
-          [gradient]="gradient"
-          [animations]="animations"
-          [tooltipDisabled]="tooltipDisabled"
-          [tooltipTemplate]="tooltipTemplate"
-          [tooltipText]="tooltipText"
-          (select)="onClick($event)"
-          (activate)="onActivate($event, undefined)"
-          (deactivate)="onDeactivate($event, undefined)"
-        />
-      </svg:g>
-    </ngx-charts-chart>
-  `,
+        @if (xAxis) {
+          <svg:g
+            ngx-charts-x-axis
+            [xScale]="xScale"
+            [dims]="dims"
+            [showLabel]="showXAxisLabel"
+            [labelText]="xAxisLabel"
+            [trimTicks]="trimXAxisTicks"
+            [rotateTicks]="rotateXAxisTicks"
+            [maxTickLength]="maxXAxisTickLength"
+            [tickFormatting]="xAxisTickFormatting"
+            [ticks]="xAxisTicks"
+            [wrapTicks]="wrapTicks"
+            (dimensionsChanged)="updateXAxisHeight($event)"
+            ></svg:g>
+          }
+          @if (yAxis) {
+            <svg:g
+              ngx-charts-y-axis
+              [yScale]="yScale"
+              [dims]="dims"
+              [showLabel]="showYAxisLabel"
+              [labelText]="yAxisLabel"
+              [trimTicks]="trimYAxisTicks"
+              [maxTickLength]="maxYAxisTickLength"
+              [tickFormatting]="yAxisTickFormatting"
+              [ticks]="yAxisTicks"
+              [wrapTicks]="wrapTicks"
+              (dimensionsChanged)="updateYAxisWidth($event)"
+              ></svg:g>
+            }
+            @for (rect of rects; track rect) {
+              <svg:rect
+                [attr.x]="rect.x"
+                [attr.y]="rect.y"
+                [attr.rx]="rect.rx"
+                [attr.width]="rect.width"
+                [attr.height]="rect.height"
+                [attr.fill]="rect.fill"
+                />
+            }
+            <svg:g
+              ngx-charts-heat-map-cell-series
+              [xScale]="xScale"
+              [yScale]="yScale"
+              [colors]="colors"
+              [data]="results"
+              [gradient]="gradient"
+              [animations]="animations"
+              [tooltipDisabled]="tooltipDisabled"
+              [tooltipTemplate]="tooltipTemplate"
+              [tooltipText]="tooltipText"
+              (select)="onClick($event)"
+              (activate)="onActivate($event, undefined)"
+              (deactivate)="onDeactivate($event, undefined)"
+              />
+            </svg:g>
+          </ngx-charts-chart>
+    `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['../common/base-chart.component.scss'],
   encapsulation: ViewEncapsulation.None,

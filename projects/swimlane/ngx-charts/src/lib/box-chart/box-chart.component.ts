@@ -29,7 +29,7 @@ import { ScaleType } from '../common/types/scale-type.enum';
       (legendLabelClick)="onClick($event)"
       (legendLabelActivate)="onActivate($event)"
       (legendLabelDeactivate)="onDeactivate($event)"
-    >
+      >
       <svg:g [attr.transform]="transform" class="box-chart chart">
         <svg:g
           ngx-charts-x-axis
@@ -40,7 +40,7 @@ import { ScaleType } from '../common/types/scale-type.enum';
           [labelText]="xAxisLabel"
           [wrapTicks]="wrapTicks"
           (dimensionsChanged)="updateXAxisHeight($event)"
-        />
+          />
         <svg:g
           ngx-charts-y-axis
           [showGridLines]="showGridLines"
@@ -50,32 +50,34 @@ import { ScaleType } from '../common/types/scale-type.enum';
           [labelText]="yAxisLabel"
           [wrapTicks]="wrapTicks"
           (dimensionsChanged)="updateYAxisWidth($event)"
-        />
-      </svg:g>
-      <svg:g [attr.transform]="transform">
-        <svg:g *ngFor="let result of results; trackBy: trackBy">
-          <svg:g
-            ngx-charts-box-series
-            [xScale]="xScale"
-            [yScale]="yScale"
-            [colors]="colors"
-            [roundEdges]="roundEdges"
-            [strokeColor]="strokeColor"
-            [strokeWidth]="strokeWidth"
-            [tooltipDisabled]="tooltipDisabled"
-            [tooltipTemplate]="tooltipTemplate"
-            [series]="result"
-            [dims]="dims"
-            [animations]="animations"
-            [gradient]="gradient"
-            (activate)="onActivate($event)"
-            (deactivate)="onDeactivate($event)"
-            (select)="onClick($event)"
           />
         </svg:g>
-      </svg:g>
-    </ngx-charts-chart>
-  `,
+        <svg:g [attr.transform]="transform">
+          @for (result of results; track trackBy($index, result)) {
+            <svg:g>
+              <svg:g
+                ngx-charts-box-series
+                [xScale]="xScale"
+                [yScale]="yScale"
+                [colors]="colors"
+                [roundEdges]="roundEdges"
+                [strokeColor]="strokeColor"
+                [strokeWidth]="strokeWidth"
+                [tooltipDisabled]="tooltipDisabled"
+                [tooltipTemplate]="tooltipTemplate"
+                [series]="result"
+                [dims]="dims"
+                [animations]="animations"
+                [gradient]="gradient"
+                (activate)="onActivate($event)"
+                (deactivate)="onDeactivate($event)"
+                (select)="onClick($event)"
+                />
+              </svg:g>
+            }
+            </svg:g>
+          </ngx-charts-chart>
+    `,
   styleUrls: ['../common/base-chart.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,

@@ -40,68 +40,70 @@ enum ElementType {
           [orientation]="barOrientation.Horizontal"
           [roundEdges]="true"
           [animations]="animations"
-        ></svg:g>
-        <svg:g
-          ngx-charts-bar
-          [width]="valueScale(value)"
-          [height]="3"
-          [x]="margin[3]"
-          [y]="dims.height / 2 + margin[0] - 2"
-          [fill]="colors.getColor(units)"
-          [data]="{}"
-          [orientation]="barOrientation.Horizontal"
-          [roundEdges]="true"
-          [animations]="animations"
-        ></svg:g>
-
-        <svg:line
-          *ngIf="hasPreviousValue"
-          [attr.transform]="transformLine"
-          x1="0"
-          y1="5"
-          x2="0"
-          y2="15"
-          [attr.stroke]="colors.getColor(units)"
-        />
-
-        <svg:line
-          *ngIf="hasPreviousValue"
-          [attr.transform]="transformLine"
-          x1="0"
-          y1="-5"
-          x2="0"
-          y2="-15"
-          [attr.stroke]="colors.getColor(units)"
-        />
-
-        <svg:g [attr.transform]="transform">
-          <svg:g [attr.transform]="valueTranslate">
-            <svg:text
-              #valueTextEl
-              class="value"
-              [style.textAnchor]="'middle'"
-              [attr.transform]="valueTextTransform"
-              alignment-baseline="after-edge"
-            >
-              {{ displayValue }}
-            </svg:text>
-          </svg:g>
-
-          <svg:g [attr.transform]="unitsTranslate">
-            <svg:text
-              #unitsTextEl
-              class="units"
-              [style.textAnchor]="'middle'"
-              [attr.transform]="unitsTextTransform"
-              alignment-baseline="before-edge"
-            >
-              {{ units }}
-            </svg:text>
-          </svg:g>
-        </svg:g>
-      </svg:g>
-    </ngx-charts-chart>
-  `,
+          ></svg:g>
+          <svg:g
+            ngx-charts-bar
+            [width]="valueScale(value)"
+            [height]="3"
+            [x]="margin[3]"
+            [y]="dims.height / 2 + margin[0] - 2"
+            [fill]="colors.getColor(units)"
+            [data]="{}"
+            [orientation]="barOrientation.Horizontal"
+            [roundEdges]="true"
+            [animations]="animations"
+            ></svg:g>
+    
+            @if (hasPreviousValue) {
+              <svg:line
+                [attr.transform]="transformLine"
+                x1="0"
+                y1="5"
+                x2="0"
+                y2="15"
+                [attr.stroke]="colors.getColor(units)"
+                />
+            }
+    
+            @if (hasPreviousValue) {
+              <svg:line
+                [attr.transform]="transformLine"
+                x1="0"
+                y1="-5"
+                x2="0"
+                y2="-15"
+                [attr.stroke]="colors.getColor(units)"
+                />
+            }
+    
+            <svg:g [attr.transform]="transform">
+              <svg:g [attr.transform]="valueTranslate">
+                <svg:text
+                  #valueTextEl
+                  class="value"
+                  [style.textAnchor]="'middle'"
+                  [attr.transform]="valueTextTransform"
+                  alignment-baseline="after-edge"
+                  >
+                  {{ displayValue }}
+                  </svg:text>
+                  </svg:g>
+    
+                  <svg:g [attr.transform]="unitsTranslate">
+                    <svg:text
+                      #unitsTextEl
+                      class="units"
+                      [style.textAnchor]="'middle'"
+                      [attr.transform]="unitsTextTransform"
+                      alignment-baseline="before-edge"
+                      >
+                      {{ units }}
+                      </svg:text>
+                      </svg:g>
+                      </svg:g>
+                      </svg:g>
+                    </ngx-charts-chart>
+    `,
   styleUrls: ['../common/base-chart.component.scss', './linear-gauge.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,

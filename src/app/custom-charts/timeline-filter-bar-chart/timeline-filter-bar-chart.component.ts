@@ -20,56 +20,58 @@ import {
       [showLegend]="false"
       [animations]="animations"
       class="timeline-filter-bar-chart"
-    >
+      >
       <svg:g [attr.transform]="transform" class="chart">
-        <svg:g
-          ngx-charts-x-axis
-          *ngIf="xAxis"
-          [xScale]="timeScale"
-          [dims]="dims"
-          [showLabel]="showXAxisLabel"
-          [labelText]="xAxisLabel"
-          [wrapTicks]="wrapTicks"
-          (dimensionsChanged)="updateXAxisHeight($event)"
-        ></svg:g>
-        <svg:g
-          ngx-charts-y-axis
-          *ngIf="yAxis"
-          [yScale]="yScale"
-          [dims]="dims"
-          [showGridLines]="showGridLines"
-          [showLabel]="showYAxisLabel"
-          [labelText]="yAxisLabel"
-          [wrapTicks]="wrapTicks"
-          (dimensionsChanged)="updateYAxisWidth($event)"
-        ></svg:g>
-        <svg:g
-          ngx-charts-series-vertical
-          [xScale]="xScale"
-          [yScale]="yScale"
-          [colors]="colors"
-          [series]="results"
-          [dims]="dims"
-          [gradient]="gradient"
-          [animations]="animations"
-          [noBarWhenZero]="noBarWhenZero"
-          [tooltipDisabled]="true"
-        ></svg:g>
-      </svg:g>
-
-      <svg:g [attr.transform]="transform" class="timeline">
-        <svg:filter [attr.id]="filterId">
-          <svg:feColorMatrix
-            in="SourceGraphic"
-            type="matrix"
-            values="0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0"
-          />
-        </svg:filter>
-        <svg:rect x="0" [attr.width]="dims.width" y="0" [attr.height]="dims.height" class="brush-background" />
-        <svg:g class="brush"></svg:g>
-      </svg:g>
-    </ngx-charts-chart>
-  `,
+        @if (xAxis) {
+          <svg:g
+            ngx-charts-x-axis
+            [xScale]="timeScale"
+            [dims]="dims"
+            [showLabel]="showXAxisLabel"
+            [labelText]="xAxisLabel"
+            [wrapTicks]="wrapTicks"
+            (dimensionsChanged)="updateXAxisHeight($event)"
+            ></svg:g>
+          }
+          @if (yAxis) {
+            <svg:g
+              ngx-charts-y-axis
+              [yScale]="yScale"
+              [dims]="dims"
+              [showGridLines]="showGridLines"
+              [showLabel]="showYAxisLabel"
+              [labelText]="yAxisLabel"
+              [wrapTicks]="wrapTicks"
+              (dimensionsChanged)="updateYAxisWidth($event)"
+              ></svg:g>
+            }
+            <svg:g
+              ngx-charts-series-vertical
+              [xScale]="xScale"
+              [yScale]="yScale"
+              [colors]="colors"
+              [series]="results"
+              [dims]="dims"
+              [gradient]="gradient"
+              [animations]="animations"
+              [noBarWhenZero]="noBarWhenZero"
+              [tooltipDisabled]="true"
+              ></svg:g>
+              </svg:g>
+    
+              <svg:g [attr.transform]="transform" class="timeline">
+                <svg:filter [attr.id]="filterId">
+                  <svg:feColorMatrix
+                    in="SourceGraphic"
+                    type="matrix"
+                    values="0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0"
+                    />
+                  </svg:filter>
+                  <svg:rect x="0" [attr.width]="dims.width" y="0" [attr.height]="dims.height" class="brush-background" />
+                  <svg:g class="brush"></svg:g>
+                    </svg:g>
+                  </ngx-charts-chart>
+    `,
   styleUrls: ['../../../../projects/swimlane/ngx-charts/src/lib/common/base-chart.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
