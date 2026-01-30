@@ -114,7 +114,7 @@
         }
       }
     },
-    "@swimlane/ngx-charts": {
+    "ng-hub-ui-charts": {
       "projectType": "library",
       "root": "projects/swimlane/ngx-charts",
       "sourceRoot": "projects/swimlane/ngx-charts/src",

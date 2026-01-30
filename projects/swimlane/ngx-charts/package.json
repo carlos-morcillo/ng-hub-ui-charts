@@ -1,42 +1,48 @@
 {
-  "name": "@swimlane/ngx-charts",
-  "version": "23.1.0",
-  "description": "Declarative Charting Framework for Angular",
+  "name": "ng-hub-ui-charts",
+  "version": "21.0.0",
+  "description": "Angular charting library for data visualization. Fork of ngx-charts with Angular 21+ support. Part of the ng-hub-ui component family.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/swimlane/ngx-charts.git"
+    "url": "git+https://github.com/carlos-morcillo/ng-hub-ui-charts.git"
   },
   "keywords": [
     "angular",
-    "angularjs",
     "charts",
     "charting",
-    "angular",
     "d3",
     "d3.js",
-    "d3js",
-    "viz",
-    "graph",
-    "svg",
-    "dataviz",
-    "data visualization",
-    "viz",
-    "graph"
+    "visualization",
+    "data-visualization",
+    "component-library",
+    "angular-components",
+    "ngx-charts",
+    "hub-ui",
+    "ng-hub-ui",
+    "bar-chart",
+    "line-chart",
+    "pie-chart",
+    "area-chart",
+    "bubble-chart",
+    "treemap",
+    "heatmap",
+    "gauge",
+    "sankey"
   ],
-  "author": "Swimlane",
+  "author": "Carlos Morcillo (fork from Swimlane ngx-charts)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/swimlane/ngx-charts/issues"
+    "url": "https://github.com/carlos-morcillo/ng-hub-ui-charts/issues"
   },
-  "homepage": "https://github.com/swimlane/ngx-charts#readme",
+  "homepage": "https://github.com/carlos-morcillo/ng-hub-ui-charts#readme",
   "peerDependencies": {
-    "@angular/animations": "18.x || 19.x || 20.x",
-    "@angular/cdk": "18.x || 19.x || 20.x",
-    "@angular/core": "18.x || 19.x || 20.x",
-    "@angular/common": "18.x || 19.x || 20.x",
-    "@angular/forms": "18.x || 19.x || 20.x",
-    "@angular/platform-browser": "18.x || 19.x || 20.x",
-    "@angular/platform-browser-dynamic": "18.x || 19.x || 20.x",
+    "@angular/animations": "21.x",
+    "@angular/cdk": "20.x || 21.x",
+    "@angular/core": "21.x",
+    "@angular/common": "21.x",
+    "@angular/forms": "21.x",
+    "@angular/platform-browser": "21.x",
+    "@angular/platform-browser-dynamic": "21.x",
     "rxjs": "7.x"
   },
   "dependencies": {

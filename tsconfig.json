@@ -15,10 +15,10 @@
       "node_modules/@types"
     ],
     "paths": {
-      "@swimlane/ngx-charts": [
+      "ng-hub-ui-charts": [
         "projects/swimlane/ngx-charts/src/public_api"
       ],
-      "@swimlane/ngx-charts/*": [
+      "ng-hub-ui-charts/*": [
         "projects/swimlane/ngx-charts/src/lib/*"
       ]
     },
