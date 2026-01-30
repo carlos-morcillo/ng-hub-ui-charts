@@ -1190,10 +1190,18 @@
   </div>
   <div class="sidebar">
     <h1>
-      Ngx-<strong>Charts</strong>
+      <span style="color: #999; font-size: 0.7em">ng-hub-ui /</span><br />
+      <strong>Charts</strong>
       <small class="version">{{ APP_VERSION }}</small>
       <small class="subtitle">Angular Chart Framework</small>
     </h1>
+    <div style="margin: 20px 0; padding: 10px; background: rgba(100, 150, 255, 0.1); border-left: 3px solid #6496ff; border-radius: 4px">
+      <small style="color: #6496ff">
+        <strong>Part of ng-hub-ui</strong><br />
+        Family of Angular components<br />
+        <a href="https://github.com/carlos-morcillo/ng-hub-ui-charts" target="_blank" style="color: #6496ff">View on GitHub</a>
+      </small>
+    </div>
     <div style="margin: 20px">
       <h3>Chart Type</h3>
       <select [ngModel]="chartType" (ngModelChange)="selectChart($event)">
@@ -1815,7 +1823,8 @@
             </div>
           }
         </div>
-        <h3><a href="https://swimlane.gitbooks.io/ngx-charts/content/" target="_blank">Documentation</a></h3>
+        <h3><a href="https://github.com/carlos-morcillo/ng-hub-ui-charts" target="_blank">GitHub Repository</a></h3>
+        <h3><a href="https://swimlane.gitbooks.io/ngx-charts/content/" target="_blank">Original Docs (ngx-charts)</a></h3>
       </div>
     </div>
   </main>

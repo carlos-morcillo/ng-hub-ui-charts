@@ -1,13 +1,14 @@
 {
-  "name": "ngx-charts",
-  "version": "0.0.0",
+  "name": "ng-hub-ui-charts",
+  "version": "21.0.0",
+  "description": "Angular charting library for data visualization. Fork of ngx-charts with Angular 21+ support. Part of the ng-hub-ui component family.",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "build:lib": "ng build @swimlane/ngx-charts",
     "build:lib:prod": "ng build @swimlane/ngx-charts --configuration production",
-    "build:demo": "npm run build:lib:prod && cross-env NODE_ENV=production ng build --configuration production --base-href=\"/ngx-charts/\"",
+    "build:demo": "npm run build:lib:prod && cross-env NODE_ENV=production ng build --configuration production --base-href=\"/ng-hub-ui-charts/\"",
     "copy-files": "cp README.md dist/swimlane/ngx-charts/README.md && cp LICENSE dist/swimlane/ngx-charts/LICENSE  && cp docs/changelog.md dist/swimlane/ngx-charts/CHANGELOG.md",
     "ci": "run-s lint prettier:ci test:ci",
     "test": "run-s lint prettier:ci test:unit",
@@ -119,9 +120,46 @@
     "typescript": "~5.9.3",
     "webpack": "5"
   },
+  "peerDependencies": {
+    "@angular/core": "^21.0.0",
+    "@angular/common": "^21.0.0"
+  },
   "volta": {
     "node": "22.16.0",
     "yarn": "4.9.2"
   },
-  "packageManager": "yarn@4.9.2"
+  "packageManager": "yarn@4.9.2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/carlos-morcillo/ng-hub-ui-charts"
+  },
+  "homepage": "https://github.com/carlos-morcillo/ng-hub-ui-charts#readme",
+  "bugs": {
+    "url": "https://github.com/carlos-morcillo/ng-hub-ui-charts/issues"
+  },
+  "keywords": [
+    "angular",
+    "charts",
+    "d3",
+    "visualization",
+    "data-visualization",
+    "graphs",
+    "graphing",
+    "component-library",
+    "angular-components",
+    "ngx-charts",
+    "hub-ui",
+    "ng-hub-ui",
+    "bar-chart",
+    "line-chart",
+    "pie-chart",
+    "area-chart",
+    "bubble-chart",
+    "treemap",
+    "heatmap",
+    "gauge",
+    "sankey"
+  ],
+  "author": "Carlos Morcillo (fork from Swimlane ngx-charts)",
+  "license": "MIT"
 }

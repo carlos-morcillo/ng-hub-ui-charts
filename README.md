@@ -1,19 +1,35 @@
-# ngx-charts
+# ng-hub-ui-charts
 
-[![Join the chat at https://gitter.im/swimlane/ngx-charts](https://badges.gitter.im/swimlane/ngx-charts.svg)](https://gitter.im/swimlane/ngx-charts?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b097196f7f544412a79a99080a41bbc1)](https://www.codacy.com/app/Swimlane/ngx-charts?utm_source=github.com&utm_medium=referral&utm_content=swimlane/ngx-charts&utm_campaign=Badge_Grade)
-[![npm version](https://badge.fury.io/js/%40swimlane%2Fngx-charts.svg)](https://badge.fury.io/js/%40swimlane%2Fngx-charts)
-[![npm downloads](https://img.shields.io/npm/dm/@swimlane/ngx-charts.svg)](https://npmjs.org/@swimlane/ngx-charts)
+[![npm version](https://badge.fury.io/js/ng-hub-ui-charts.svg)](https://badge.fury.io/js/ng-hub-ui-charts)
+[![npm downloads](https://img.shields.io/npm/dm/ng-hub-ui-charts.svg)](https://npmjs.org/ng-hub-ui-charts)
 
-Declarative Charting Framework for Angular!
+> **Part of the [ng-hub-ui](https://github.com/carlos-morcillo/ng-hub-ui) family** - A collection of standalone Angular component libraries
 
-ngx-charts is unique because we don't merely wrap d3, nor any other chart engine for that matter. It is using Angular to render and animate the SVG elements with all of its binding and speed goodness, and uses d3 for the excellent math functions, scales, axis and shape generators. By having Angular do all of the rendering it opens us up to endless possibilities the Angular platform provides such as AoT, SSR, etc.
+Declarative Charting Framework for Angular with Angular 21+ support!
 
-Data visualization is a science but that doesn't mean it has to be ugly. One of the big efforts we've made while creating this project is to make the charts aesthetically pleasing. The styles are also completely customizable through CSS, so you can override them as you please.
+## About This Fork
 
-Also, constructing custom charts is possible by leveraging the various ngx-charts components that are exposed through the ngx-charts module.
+**ng-hub-ui-charts** is a maintained fork of [ngx-charts](https://github.com/swimlane/ngx-charts) by Swimlane, updated for Angular 21+ compatibility. It's part of the ng-hub-ui family of component libraries, following the same design patterns and integration standards.
 
-For more info, check out the [documentation](https://swimlane.gitbook.io/ngx-charts) and the [demos](https://swimlane.github.io/ngx-charts/).
+### What's Different
+
+- **Angular 21+ Support**: Updated dependencies and compatibility with the latest Angular versions
+- **ng-hub-ui Integration**: Follows ng-hub-ui standards for consistency across the component family
+- **Maintained**: Regular updates and maintenance to support current Angular versions
+
+### Original Project
+
+The original and incredible work is by [Swimlane](http://swimlane.com). This fork maintains their excellent charting architecture while updating for modern Angular development.
+
+## About ng-hub-ui
+
+The **ng-hub-ui** family provides a collection of standalone, reusable Angular components:
+
+- [ng-hub-ui-paginable](https://github.com/carlos-morcillo/ng-hub-ui-paginable) - Advanced tables and pagination components
+- [ng-hub-ui-charts](https://github.com/carlos-morcillo/ng-hub-ui-charts) - **This library** - Charting and data visualization
+- [And more...](https://github.com/carlos-morcillo?tab=repositories&q=ng-hub-ui)
+
+All libraries follow consistent patterns and work seamlessly together.
 
 ## Features
 
@@ -44,36 +60,150 @@ For more info, check out the [documentation](https://swimlane.gitbook.io/ngx-cha
 - Data point Event Handlers
 - Works with ngUpgrade
 
-## Install
+## Quick Start
 
-To use ngx-charts in your project install it via [npm](https://www.npmjs.com/package/@swimlane/ngx-charts):
+### Installation
 
+```bash
+npm install ng-hub-ui-charts
 ```
-npm i @swimlane/ngx-charts --save
+
+### Usage
+
+Import the chart component in your Angular module:
+
+```typescript
+import { NgxChartsModule } from 'ng-hub-ui-charts';
+
+@NgModule({
+  imports: [NgxChartsModule]
+})
+export class AppModule { }
 ```
+
+Use in your template:
+
+```html
+<ngx-charts-bar-horizontal
+  [view]="view"
+  [scheme]="colorScheme"
+  [results]="data"
+  [xAxis]="true"
+  [yAxis]="true"
+  [legend]="true"
+  [showXAxisLabel]="true"
+  [showYAxisLabel]="true"
+  xAxisLabel="Country"
+  yAxisLabel="Sales">
+</ngx-charts-bar-horizontal>
+```
+
+## Documentation
+
+- **Live Demo**: Coming soon with ng-hub-ui-charts
+- **Original ngx-charts Docs**: [https://swimlane.gitbook.io/ngx-charts](https://swimlane.gitbook.io/ngx-charts)
+- **Custom Charts**: See [custom-charts.md](docs/custom-charts.md) for building custom charts using ngx-charts components
+
+## Requirements
+
+- Angular 21+
+- RxJS 7.8+
+- TypeScript 5.9+
+- Node.js 22.16+
+
+## API & Architecture
+
+ng-hub-ui-charts maintains full compatibility with the ngx-charts API. Charts are built using:
+
+- **Angular** for rendering and animation of SVG elements
+- **D3** for mathematical functions, scales, axis and shape generators
+- Signal-based reactivity for optimal change detection
+
+This approach provides:
+- Native Angular rendering with AoT compilation support
+- Server-side rendering (SSR) compatibility
+- Type safety and excellent IDE support
 
 ## Custom Charts
 
-To learn how to use the ngx-charts components to build custom charts and find examples, please refer to our [Custom Charts Page](https://github.com/swimlane/ngx-charts/blob/master/docs/custom-charts.md).
+Leverage various ngx-charts components to build custom charts:
 
-## Release
+```typescript
+import {
+  ChartComponent,
+  AreaChartComponent,
+  AxisComponent
+} from 'ng-hub-ui-charts';
+```
 
-- Checkout master (`git checkout master`)
-- Pull master (`git pull`)
-- Refresh node modules (`yarn install --frozen-lockfile`)
-- Run tests (`yarn test`)
-- Examine log to determine next version (X.Y.Z)
-- Run `git checkout -b release/X.Y.Z`
-- Update version in `projects/swimlane/ngx-charts/package.json`
-- Update changelog in `projects/docs/changelog.md`
-- Run `git commit -am "(release): X.Y.Z"`
-- Run `git tag X.Y.Z`
-- Run `git push origin HEAD --tags`
-- Run `yarn publish:lib`
-- Submit PR
+Refer to [custom-charts.md](docs/custom-charts.md) for detailed examples.
 
-## Credits
+## 🤝 Contributing
 
-`ngx-charts` is a [Swimlane](http://swimlane.com) open-source project; we believe in giving back to the open-source community by sharing some of the projects we build for our application. Swimlane is an automated cyber security operations and incident response platform that enables cyber security teams to leverage threat intelligence, speed up incident response and automate security operations.
+We welcome contributions! Whether you've found a bug, want to improve the documentation, or add new features, your help is appreciated.
 
-[SecOps Hub](http://secopshub.com) is an open, product-agnostic, online community for security professionals to share ideas, use cases, best practices, and incident response strategies.
+### Getting Started
+
+1. **Fork** the repository
+2. **Clone** your fork: `git clone https://github.com/your-username/ng-hub-ui-charts.git`
+3. **Install dependencies**: `yarn install`
+4. **Create a branch**: `git checkout -b feature/your-feature-name`
+
+### Development
+
+```bash
+# Start development server
+yarn start
+
+# Run tests
+yarn test
+
+# Build the library
+yarn build:lib:prod
+
+# Run linting and formatting checks
+yarn lint
+yarn prettier:ci
+```
+
+### Submitting Changes
+
+1. **Code Style**: Ensure your code follows the project's style (run `yarn fix` to auto-fix)
+2. **Tests**: Add tests for new features or bug fixes
+3. **Commit**: Use clear, descriptive commit messages
+4. **Push**: Push to your fork
+5. **Create a Pull Request**: Open a PR with a clear description of your changes
+
+### Issues
+
+Found a bug? Please [create an issue](https://github.com/carlos-morcillo/ng-hub-ui-charts/issues) with:
+- Clear description of the problem
+- Steps to reproduce
+- Expected vs actual behavior
+- Angular and library versions
+
+### Development Guidelines
+
+- Follow the existing code patterns and structure
+- Maintain compatibility with Angular 21+
+- Update documentation for new features
+- Ensure all tests pass before submitting PR
+- Keep commits atomic and focused
+
+### Questions?
+
+Feel free to open a [discussion](https://github.com/carlos-morcillo/ng-hub-ui-charts/discussions) or reach out through the repository issues.
+
+## License
+
+MIT - See [LICENSE](LICENSE) for details
+
+## Credits & Attribution
+
+**Original Project**: [ngx-charts](https://github.com/swimlane/ngx-charts) by [Swimlane](http://swimlane.com)
+
+Swimlane is an automated cyber security operations platform. Learn more at [swimlane.com](http://swimlane.com)
+
+**Current Maintainer**: Carlos Morcillo
+**Package**: ng-hub-ui-charts
+**Part of**: [ng-hub-ui](https://github.com/carlos-morcillo/ng-hub-ui) family
