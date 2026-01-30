@@ -25,9 +25,18 @@ The original and incredible work is by [Swimlane](http://swimlane.com). This for
 
 The **ng-hub-ui** family provides a collection of standalone, reusable Angular components:
 
-- [ng-hub-ui-paginable](https://github.com/carlos-morcillo/ng-hub-ui-paginable) - Advanced tables and pagination components
+- [ng-hub-ui-accordion](https://github.com/carlos-morcillo/ng-hub-ui-accordion) - Accordion/collapsible components
+- [ng-hub-ui-action-sheet](https://github.com/carlos-morcillo/ng-hub-ui-action-sheet) - Action sheet modal components
+- [ng-hub-ui-avatar](https://github.com/carlos-morcillo/ng-hub-ui-avatar) - Avatar display components
+- [ng-hub-ui-board](https://github.com/carlos-morcillo/ng-hub-ui-board) - Board/kanban layout components
+- [ng-hub-ui-breadcrumbs](https://github.com/carlos-morcillo/ng-hub-ui-breadcrumbs) - Breadcrumb navigation components
+- [ng-hub-ui-calendar](https://github.com/carlos-morcillo/ng-hub-ui-calendar) - Calendar and date picker components
 - [ng-hub-ui-charts](https://github.com/carlos-morcillo/ng-hub-ui-charts) - **This library** - Charting and data visualization
-- [And more...](https://github.com/carlos-morcillo?tab=repositories&q=ng-hub-ui)
+- [ng-hub-ui-modal](https://github.com/carlos-morcillo/ng-hub-ui-modal) - Modal dialog components
+- [ng-hub-ui-paginable](https://github.com/carlos-morcillo/ng-hub-ui-paginable) - Advanced tables and pagination components
+- [ng-hub-ui-portal](https://github.com/carlos-morcillo/ng-hub-ui-portal) - Portal and overlay components
+- [ng-hub-ui-stepper](https://github.com/carlos-morcillo/ng-hub-ui-stepper) - Stepper/wizard components
+- [ng-hub-ui-utils](https://github.com/carlos-morcillo/ng-hub-ui-utils) - Utility functions and helpers
 
 All libraries follow consistent patterns and work seamlessly together.
 
